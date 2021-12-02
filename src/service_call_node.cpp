@@ -24,7 +24,7 @@ open_manipulator_msgs::setxyz srv;
 void chatterCallback(const geometry_msgs::Vector3::ConstPtr& center_msg)
 {
   srv.request.srv_input_x = center_msg->x;
-  srv.request.srv_input_y = center_msg->y;
+  srv.request.srv_input_y =center_msg->y;
   srv.request.srv_input_z = center_msg->z;
 
 
@@ -41,14 +41,13 @@ int main(int argc, char **argv)
   ros::init(argc, argv, "service_call_node");
   ros::NodeHandle nh;
 
-  ros::Subscriber sub = nh.subscribe("/darknet_ros_3d/centers", 100, chatterCallback);
+  ros::Subscriber sub = nh.subscribe("/darknet_3d/darknet_ros_3d/centers", 100, chatterCallback);
   ros::Rate loop_rate(30);
   while (ros::ok())
    {
- // srv.request.srv_input_x;
- // srv.request.srv_input_y;
- // srv.request.srv_input_z;
-  ros::ServiceClient client_node = nh.serviceClient<open_manipulator_msgs::setxyz>("client_node");
+
+
+  ros::ServiceClient client_node = nh.serviceClient<open_manipulator_msgs::setxyz>("/input_xyz");
 
 if (client_node.call(srv) ) {
  //ROS_INFO("receive srv: %d", (float)srv.response.result);
