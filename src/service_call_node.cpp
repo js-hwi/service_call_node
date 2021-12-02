@@ -60,7 +60,7 @@ if (client_node.call(srv) ) {
 }
 
 else {
-  ROS_ERROR("Failed to call service ros_tutorial_srv");
+  ROS_ERROR("Failed to call service ros_tutorial_srv__");
 }
 
 ros::spinOnce();
